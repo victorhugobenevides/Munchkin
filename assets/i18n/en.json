@@ -1,0 +1,20 @@
+{
+  "appTitle": "Munchkin Level Power Tracker",
+  "addPlayerDialogTitle": "Add Player",
+  "playerNameLabel": "Player Name",
+  "playerNameValidationError": "Please enter a player name",
+  "maleLabel": "Male",
+  "femaleLabel": "Female",
+  "selectedGenderLabel": "Selected Gender",
+  "cancelButtonLabel": "Cancel",
+  "addButtonLabel": "Add",
+  "summaryButtonLabel": "Summary",
+  "summaryDialogTitle": "Summary",
+  "totalLevelLabel": "Total Level",
+  "totalPowerLabel": "Total Power",
+  "closeButtonLabel": "Close",
+  "changeGenderDialogTitle": "Change Gender",
+  "levelLabel": "Level",
+  "powerLabel": "Power",
+  "totalLabel": "Total"
+}
