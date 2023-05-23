@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app_localizations_delegate.dart';
 import 'munchkin_home_page.dart';
 
-
 void main() {
   runApp(const MunchkinApp());
 }
@@ -23,18 +22,18 @@ class MunchkinApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en', 'US'),
       ],
+      themeMode: ThemeMode.system,
       theme: ThemeData(
-        primaryColor: Colors.amber,
-        accentColor: Colors.deepPurple,
+        primarySwatch: Colors.amber,
+        hintColor: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-          color: Colors.amber,
-          textTheme: TextTheme(
-            headline6: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+          backgroundColor: Colors.amber,
+          foregroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
         ),
         textTheme: const TextTheme(
@@ -49,10 +48,10 @@ class MunchkinApp extends StatelessWidget {
           ),
         ),
         cardColor: Colors.white,
-        cardTheme: CardTheme(
+        cardTheme: const CardTheme(
           elevation: 3.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
@@ -60,19 +59,15 @@ class MunchkinApp extends StatelessWidget {
           backgroundColor: Colors.amber,
         ),
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.amber,
-        accentColor: Colors.deepPurple,
+      darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.grey[900],
         appBarTheme: const AppBarTheme(
-          color: Colors.amber,
-          textTheme: TextTheme(
-            headline6: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+          backgroundColor: Colors.amber,
+          foregroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
         ),
         textTheme: const TextTheme(
@@ -87,18 +82,17 @@ class MunchkinApp extends StatelessWidget {
           ),
         ),
         cardColor: Colors.grey[800],
-        cardTheme: CardTheme(
+        cardTheme: const CardTheme(
           elevation: 3.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: Colors.amber,
-        ),
+        ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.amber).copyWith(secondary: Colors.deepPurple),
       ),
-      themeMode: ThemeMode.system,
       home: const MunchkinHomePage(title: 'Munchkin'),
     );
   }
