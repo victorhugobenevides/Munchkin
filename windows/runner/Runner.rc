@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.itbevides" "\0"
-            VALUE "FileDescription", "munkthin" "\0"
+            VALUE "FileDescription", "munchkin" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "munkthin" "\0"
+            VALUE "InternalName", "munchkin" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.itbevides. All rights reserved." "\0"
-            VALUE "OriginalFilename", "munkthin.exe" "\0"
-            VALUE "ProductName", "munkthin" "\0"
+            VALUE "OriginalFilename", "munchkin.exe" "\0"
+            VALUE "ProductName", "munchkin" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

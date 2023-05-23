@@ -1,4 +1,4 @@
-package com.itbevides.munkthin
+package com.itbevides.munchkin
 
 import io.flutter.embedding.android.FlutterActivity
 
