@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:munchkin/configs/app_localizations.dart';
 import 'package:munchkin/models/player.dart';
 import 'package:munchkin/dialogs/change_gender_dialog.dart';
+import 'package:munchkin/dialogs/battle_simulation_dialog.dart';
 
 class PlayerWidget extends StatelessWidget {
   const PlayerWidget({
@@ -48,22 +49,45 @@ class PlayerWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                GestureDetector(
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return ChangeGenderDialog(
-                          player: player,
-                          onGenderChanged: onGenderChanged,
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return BattleSimulationDialog(
+                              player: Player(name: player.name, level: player.level, power: player.power, gender: player.gender),
+                            );
+                          },
                         );
                       },
-                    );
-                  },
-                  child: const Icon(Icons.settings_suggest_sharp,
-                    color: Colors.black,
-                    size: 22,
-                  ),
+                      child: const Icon(
+                        Icons.gavel,
+                        color: Colors.black,
+                        size: 22,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return ChangeGenderDialog(
+                              player: player,
+                              onGenderChanged: onGenderChanged,
+                            );
+                          },
+                        );
+                      },
+                      child: const Icon(
+                        Icons.settings_suggest_sharp,
+                        color: Colors.black,
+                        size: 22,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
