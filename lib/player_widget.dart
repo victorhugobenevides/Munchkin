@@ -38,7 +38,7 @@ class PlayerWidget extends StatelessWidget {
                   children: [
                     Icon(
                       player.gender == Gender.male ? Icons.male : Icons.female,
-                      color: player.gender == Gender.male ? Colors.blue : Colors.pink,
+                      color: Colors.black,
                       size: 48,
                     ),
                     const SizedBox(width: 10),
@@ -60,7 +60,10 @@ class PlayerWidget extends StatelessWidget {
                       },
                     );
                   },
-                  child: const Icon(Icons.change_circle),
+                  child: const Icon(Icons.settings_suggest_sharp,
+                    color: Colors.black,
+                    size: 22,
+                  ),
                 ),
               ],
             ),
@@ -71,16 +74,22 @@ class PlayerWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.add_circle_outline),
+                        icon: const Icon(
+                          Icons.add_circle_outline,
+                          size: 28,
+                        ),
                         color: Colors.green,
                         onPressed: onPowerIncrement,
                       ),
                       Text(
                         '${AppLocalizations.of(context)!.getString('powerLabel')}: ${player.power}',
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 16),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.remove_circle_outline),
+                        icon: const Icon(
+                          Icons.remove_circle_outline,
+                          size: 28,
+                        ),
                         color: Colors.red,
                         onPressed: onPowerDecrement,
                       ),
@@ -92,16 +101,22 @@ class PlayerWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.add_circle_outline),
+                        icon: const Icon(
+                          Icons.add_circle_outline,
+                          size: 28,
+                        ),
                         color: Colors.green,
                         onPressed: onLevelIncrement,
                       ),
                       Text(
                         '${AppLocalizations.of(context)!.getString('levelLabel')}: ${player.level}',
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.headline6!.copyWith(fontSize: 16),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.remove_circle_outline),
+                        icon: const Icon(
+                          Icons.remove_circle_outline,
+                          size: 28,
+                        ),
                         color: Colors.red,
                         onPressed: onLevelDecrement,
                       ),
@@ -120,14 +135,14 @@ class PlayerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(
-                        Icons.calculate,
+                        Icons.bolt,
                         color: Colors.white,
                       ),
                       const SizedBox(height: 5),
                       Text(
                         '${AppLocalizations.of(context)!.getString('totalLabel')}:',
                         style: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),

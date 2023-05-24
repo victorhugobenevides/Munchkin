@@ -14,44 +14,50 @@ class SummaryDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text(AppLocalizations.of(context)!.getString('summaryDialogTitle')),
-      content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            DataTable(
-              columns: [
-                DataColumn(
-                  label: Text(AppLocalizations.of(context)!.getString('playerNameLabel')),
-                ),
-                DataColumn(
-                  label: Text(AppLocalizations.of(context)!.getString('totalLabel')),
-                ),
-              ],
-              rows: players
-                  .map(
-                    (player) => DataRow(
-                  cells: [
-                    DataCell(Text(player.name)),
-                    DataCell(Text('${player.total}')),
-                  ],
-                ),
-              )
-                  .toList(),
-            ),
-          ],
-        ),
-      ),
-      actions: [
-        TextButton(
-          onPressed: onClose,
-          child: Text(
-            AppLocalizations.of(context)!.getString('closeButtonLabel'),
-            style: const TextStyle(fontSize: 20),
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.getString('summaryDialogTitle'),
+            style: Theme.of(context).textTheme.headline6,
           ),
-        ),
-      ],
+          SizedBox(height: 20),
+          Expanded(
+            child: SingleChildScrollView(
+              child: DataTable(
+                columns: [
+                  DataColumn(
+                    label: Text(AppLocalizations.of(context)!.getString('playerNameLabel')),
+                  ),
+                  DataColumn(
+                    label: Text(AppLocalizations.of(context)!.getString('totalLabel')),
+                  ),
+                ],
+                rows: players
+                    .map(
+                      (player) => DataRow(
+                    cells: [
+                      DataCell(Text(player.name)),
+                      DataCell(Text('${player.total}')),
+                    ],
+                  ),
+                )
+                    .toList(),
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: onClose,
+            child: Text(
+              AppLocalizations.of(context)!.getString('closeButtonLabel'),
+              style: const TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -75,7 +75,7 @@ class _MunchkinHomePageState extends State<MunchkinHomePage> {
           FloatingActionButton(
             onPressed: _showSummaryDialog,
             tooltip: AppLocalizations.of(context)!.getString('summaryButtonTooltip'),
-            child: const Icon(Icons.calculate),
+            child: const Icon(Icons.summarize),
           ),
         ],
       ),
@@ -101,7 +101,7 @@ class _MunchkinHomePageState extends State<MunchkinHomePage> {
   }
 
   void _showSummaryDialog() {
-    showDialog(
+    showModalBottomSheet(
       context: context,
       builder: (context) {
         return SummaryDialog(

@@ -59,40 +59,6 @@ class MunchkinApp extends StatelessWidget {
           backgroundColor: Colors.amber,
         ),
       ),
-      darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.grey[900],
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.amber,
-          foregroundColor: Colors.white,
-          titleTextStyle: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-        ),
-        textTheme: const TextTheme(
-          headline6: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-          subtitle1: TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-          ),
-        ),
-        cardColor: Colors.grey[800],
-        cardTheme: const CardTheme(
-          elevation: 3.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-          ),
-        ),
-        iconTheme: const IconThemeData(color: Colors.white),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.amber,
-        ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.amber).copyWith(secondary: Colors.deepPurple),
-      ),
       home: const MunchkinHomePage(title: 'Munchkin'),
     );
   }
