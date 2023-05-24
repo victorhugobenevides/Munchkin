@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:munchkin/app_localizations.dart';
-import 'package:munchkin/player.dart';
+import 'package:munchkin/configs/app_localizations.dart';
+import 'package:munchkin/models/player.dart';
 
 class ChangeGenderDialog extends StatelessWidget {
   const ChangeGenderDialog({

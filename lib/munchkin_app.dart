@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'app_localizations_delegate.dart';
+import 'configs/app_localizations_delegate.dart';
 import 'munchkin_home_page.dart';
 
 void main() {

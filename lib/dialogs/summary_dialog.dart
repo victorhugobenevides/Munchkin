@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'app_localizations.dart';
-import 'summary_item.dart';
+import 'package:munchkin/models/player.dart';
+import '../configs/app_localizations.dart';
 
 class SummaryDialog extends StatelessWidget {
   const SummaryDialog({
     Key? key,
-    required this.summaries,
+    required this.players,
     required this.onClose,
   }) : super(key: key);
 
-  final List<SummaryItem> summaries;
+  final List<Player> players;
   final VoidCallback onClose;
 
   @override
@@ -29,12 +29,12 @@ class SummaryDialog extends StatelessWidget {
                   label: Text(AppLocalizations.of(context)!.getString('totalLabel')),
                 ),
               ],
-              rows: summaries
+              rows: players
                   .map(
-                    (summary) => DataRow(
+                    (player) => DataRow(
                   cells: [
-                    DataCell(Text(summary.player.name)),
-                    DataCell(Text('${summary.player.total}')),
+                    DataCell(Text(player.name)),
+                    DataCell(Text('${player.total}')),
                   ],
                 ),
               )
