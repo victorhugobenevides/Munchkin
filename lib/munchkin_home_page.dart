@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:munchkin/summary_dialog.dart';
 import 'player.dart';
 import 'summary_item.dart';
 import 'player_viewmodel.dart';
@@ -382,53 +383,19 @@ class _MunchkinHomePageState extends State<MunchkinHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+    void _showSummaryDialog() {
+      showDialog(
+        context: context,
+        builder: (context) {
+          final summaries = players.map((player) => SummaryItem(player: player.player)).toList();
 
-  void _showSummaryDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        final summaries = players.map((player) => SummaryItem(player: player.player)).toList();
-
-        return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.getString('summaryDialogTitle')),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                DataTable(
-                  columns: [
-                    DataColumn(
-                      label: Text(AppLocalizations.of(context)!.getString('playerNameLabel')),
-                    ),
-                    DataColumn(
-                      label: Text(AppLocalizations.of(context)!.getString('totalLabel')),
-                    ),
-                  ],
-                  rows: summaries
-                      .map((summary) => DataRow(
-                    cells: [
-                      DataCell(Text(summary.player.name)),
-                      DataCell(Text('${summary.player.total}')),
-                    ],
-                  ))
-                      .toList(),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              child: Text(
-                AppLocalizations.of(context)!.getString('closeButtonLabel'),
-                style: const TextStyle(fontSize: 20),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+          return SummaryDialog(
+            summaries: summaries,
+            onClose: () {
+              Navigator.of(context).pop();
+            },
+          );
+        },
+      );
+    }
   }
-}
