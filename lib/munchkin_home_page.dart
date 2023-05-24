@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:munchkin/app_localizations.dart';
 import 'package:munchkin/player.dart';
 import 'package:munchkin/summary_dialog.dart';
+import 'change_gender_dialog.dart';
 import 'create_player_dialog.dart';
 import 'player_viewmodel.dart';
 import 'summary_item.dart';
@@ -17,23 +18,6 @@ class MunchkinHomePage extends StatefulWidget {
 
 class _MunchkinHomePageState extends State<MunchkinHomePage> {
   final List<PlayerViewModel> players = [];
-
-  void _addPlayer(Player player) {
-    setState(() {
-      players.add(PlayerViewModel(player: player));
-    });
-  }
-
-  void _showCreatePlayerDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return CreatePlayerDialog(
-          onPlayerCreated: _addPlayer,
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,49 +59,18 @@ class _MunchkinHomePageState extends State<MunchkinHomePage> {
                           showDialog(
                             context: context,
                             builder: (context) {
-                              return AlertDialog(
-                                title: Text(AppLocalizations.of(context)!.getString('changeGenderDialogTitle')),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    ListTile(
-                                      leading: const Icon(Icons.male),
-                                      title: Text(AppLocalizations.of(context)!.getString('maleLabel')),
-                                      onTap: () {
-                                        setState(() {
-                                          player.player.gender = Gender.male;
-                                        });
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                    ListTile(
-                                      leading: const Icon(Icons.female),
-                                      title: Text(AppLocalizations.of(context)!.getString('femaleLabel')),
-                                      onTap: () {
-                                        setState(() {
-                                          player.player.gender = Gender.female;
-                                        });
-                                        Navigator.of(context).pop();
-                                      },
-                                    ),
-                                  ],
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: Text(
-                                      AppLocalizations.of(context)!.getString('cancelButtonLabel'),
-                                      style: const TextStyle(fontSize: 20),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
+                              return ChangeGenderDialog(
+                                player: player.player,
+                                onGenderChanged: (gender) {
+                                  setState(() {
+                                    player.player.gender = gender;
+                                  });
+                                },
                               );
                             },
                           );
                         },
-                        child: const Icon(Icons.edit),
+                        child: const Icon(Icons.change_circle),
                       ),
                     ],
                   ),
@@ -247,6 +200,24 @@ class _MunchkinHomePageState extends State<MunchkinHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
+
+  void _showCreatePlayerDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return CreatePlayerDialog(
+          onPlayerCreated: _addPlayer,
+        );
+      },
+    );
+  }
+
+  void _addPlayer(Player player) {
+    setState(() {
+      players.add(PlayerViewModel(player: player));
+    });
+  }
+
     void _showSummaryDialog() {
       showDialog(
         context: context,
